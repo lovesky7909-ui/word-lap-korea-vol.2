@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "Group": {
+      "title": "Learning Group",
+      "description": "A group of students learning PoS together",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Group name" },
+        "status": { "type": "string", "enum": ["waiting", "playing", "finished"], "description": "Current status of the group" },
+        "currentQuestionIndex": { "type": "integer", "description": "Index of the current question" },
+        "members": { "type": "object", "description": "Map of user IDs to member data" },
+        "startTime": { "type": "string", "format": "date-time" },
+        "endTime": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "status", "currentQuestionIndex", "members"]
+    },
+    "Attempt": {
+      "title": "Quiz Attempt",
+      "description": "Student result for a specific question",
+      "type": "object",
+      "properties": {
+        "groupId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "questionIndex": { "type": "integer" },
+        "word": { "type": "string" },
+        "selectedAnswer": { "type": "string" },
+        "isCorrect": { "type": "boolean" },
+        "reason": { "type": "string" },
+        "reasonType": { "type": "string", "enum": ["form", "function", "meaning"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["groupId", "userId", "questionIndex", "isCorrect", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/groups/{groupId}": {
+      "schema": "Group",
+      "description": "Collection of learning groups"
+    },
+    "/attempts/{attemptId}": {
+      "schema": "Attempt",
+      "description": "Collection of all quiz attempts for analytics and results"
+    }
+  }
+}

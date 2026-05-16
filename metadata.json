@@ -1,0 +1,8 @@
+{
+  "name": "품사 마스터: 모둠 퀴즈 챌린지",
+  "description": "중학교 국어 품사 단원을 학습하고 모둠별로 실시간 퀴즈를 풀며 협동 학습을 할 수 있는 에듀테크 앱입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
